@@ -1,2 +1,5 @@
-.well
-  %h1 Home Page
+.row
+  .col-sm-4
+    = bootstrap_form_for @tweet do |f|
+      = f.text_area :body, label: "Tweet", rows: 6
+      = f.submit "Tweet"
