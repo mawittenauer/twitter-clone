@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :require_user
+  
   def create
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
