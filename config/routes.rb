@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   get '/register', to: 'users#new'
   get '/sign_in', to: 'sessions#new'
+  post '/sign_in', to: 'sessions#create'
 end

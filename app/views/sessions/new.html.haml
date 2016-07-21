@@ -1,0 +1,6 @@
+= bootstrap_form_tag url: sign_in_path, layout: :horizontal, control_col: "col-sm-6" do |f|
+  %h1 Sign In
+  = f.email_field :email, label: "Email Address"
+  = f.password_field :password
+  = f.submit "Sign In", class: "btn btn-default col-sm-offset-2"
+  
