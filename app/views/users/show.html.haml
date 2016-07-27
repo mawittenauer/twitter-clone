@@ -1,11 +1,11 @@
 .row
   .col-sm-4
-    = bootstrap_form_for @tweet do |f|
-      = f.text_area :body, label: "Tweet", rows: 6
-      = f.submit "Tweet"
+    %h2= @user.tag
+  
   .col-sm-6
     %h3 Tweets:
     - @tweets.each do |tweet|
       .well
         %h4= link_to "#{tweet.tag}", tweet.user
         %p= tweet.body
+  
