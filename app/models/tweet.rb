@@ -3,4 +3,5 @@ class Tweet < ActiveRecord::Base
                    length: { maximum: 140 }
   
   belongs_to :user
+  delegate :tag, to: :user
 end
