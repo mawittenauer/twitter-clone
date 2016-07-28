@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
+    @tweets = current_user.tweets
     
     if @tweet.save
       redirect_to home_path
