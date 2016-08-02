@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   def can_follow?(user)
     !leaders.include?(user) && user != self
   end
+  
+  def can_unfollow?(user)
+    leaders.include?(user) && user != self
+  end
 end
