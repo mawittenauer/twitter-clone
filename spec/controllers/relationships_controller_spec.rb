@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 describe RelationshipsController do
+  describe "DELETE destroy" do
+    it "redirects to the sign in page for unauthenticated users" do
+      delete :destroy, id: 1
+      expect(response).to redirect_to sign_in_path
+    end
+    
+    context "with authenticated user" do
+      let(:leader) { Fabricate(:user) }
+      let(:follower) { Fabricate(:user) }
+      before do
+        Relationship.create(leader: leader, follower: follower)
+        session[:user_id] = follower.id
+        delete :destroy, id: leader.id
+      end
+      it "redirects to the users show page" do
+        expect(response).to redirect_to leader
+      end
+      it "deletes the relationship" do
+        expect(Relationship.count).to eq(0)
+      end
+    end
+  end
+  
   describe "POST create" do
     it "redirects to the sign in page for unauthenticated users" do
       post :create, user_id: 1

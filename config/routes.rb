@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :tweets, only: [:create]
   resources :users, only: [:create, :show] do
     resources :relationships, only: [:create]
+    member do
+      delete '/relationships', to: 'relationships#destroy'
+    end
   end
   get '/register', to: 'users#new'
   get '/sign_in', to: 'sessions#new'
