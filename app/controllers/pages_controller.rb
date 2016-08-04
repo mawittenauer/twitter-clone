@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   
   def home
     @tweet = Tweet.new
-    @tweets = current_user.tweets
+    @tweets = current_user.user_feed
   end
   
   def front

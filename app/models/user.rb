@@ -24,6 +24,6 @@ class User < ActiveRecord::Base
     following_ids = "SELECT leader_id FROM relationships
                      WHERE  follower_id = :user_id"
     Tweet.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+OR user_id = :user_id", user_id: id).order("created_at DESC")
   end
 end
