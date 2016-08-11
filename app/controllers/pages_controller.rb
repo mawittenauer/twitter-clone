@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     @tweet = Tweet.new
     @tweets = current_user.user_feed
+    @mentions = current_user.mentions.includes(:tweet).order("created_at DESC")
   end
   
   def front
