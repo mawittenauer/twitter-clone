@@ -3,6 +3,18 @@
     = bootstrap_form_for @tweet do |f|
       = f.text_area :body, label: "Tweet", rows: 6
       = f.submit "Tweet"
+      %br
+      %br
   .col-sm-6
-    %h3 Tweets:
-    = render @tweets
+    %ul.nav.nav-tabs
+      %li(class="#{"active" if !params[:tab]}")
+        = link_to "Tweets", home_path
+      %li(class="#{"active" if params[:tab] === "mentions"}")
+        = link_to "Mentions", home_path(tab: "mentions")
+    - if !params[:tab]
+      %h3 Tweets:
+      = render @tweets
+    - elsif params[:tab] == "mentions"
+      %h3 Mentions:
+      - @mentions.each do |mention|
+        = render "tweets/tweet", tweet: mention.tweet
