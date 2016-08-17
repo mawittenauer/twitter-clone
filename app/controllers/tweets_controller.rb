@@ -26,6 +26,7 @@ class TweetsController < ApplicationController
         tag = word[1, word.length]
         user = User.find_by(tag: tag)
         Mention.create(mentioner: mentioner, mentioned: user, tweet: tweet) if user
+        user.update_attribute("unseen_mentions", user.unseen_mentions + 1) if user
       end
     end
   end
