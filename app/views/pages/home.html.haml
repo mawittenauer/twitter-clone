@@ -10,7 +10,7 @@
       %li(class="#{"active" if !params[:tab]}")
         = link_to "Tweets", home_path
       %li(class="#{"active" if params[:tab] === "mentions"}")
-        = link_to "Mentions", home_path(tab: "mentions")
+        = link_to "Mentions (#{current_user.unseen_mentions})", home_path(tab: "mentions")
     - if !params[:tab]
       %h3 Tweets:
       = render @tweets
