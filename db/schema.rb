@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811152319) do
+ActiveRecord::Schema.define(version: 20160817170610) do
 
   create_table "mentions", force: :cascade do |t|
     t.integer  "tweet_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160811152319) do
     t.text     "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unseen_mentions", default: 0
   end
 
 end
