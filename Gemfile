@@ -15,6 +15,9 @@ gem 'bcrypt'
 gem 'fabrication'
 gem 'faker'
 gem 'puma'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave-aws'
 
 group :development, :test do
   gem 'byebug'

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :tag
   has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :leaders, through: :following_relationships
+  mount_uploader :avatar, AvatarUploader
   
   def downcase_email
     self.email.downcase!
