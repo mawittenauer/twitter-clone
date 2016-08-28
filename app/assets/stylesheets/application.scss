@@ -18,6 +18,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+img {
+  max-width: 100%;
+}
+
 body {
   margin-top: 80px;
 }
@@ -42,6 +46,11 @@ a, p, label, input, textarea {
 
 .btn-orange {
   background-color: #f19f4d;
+}
+
+.tweet-profile-picture {
+  width: 60px;
+  border-radius: 5px;
 }
 
 /*****************************
