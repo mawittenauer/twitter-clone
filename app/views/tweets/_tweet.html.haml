@@ -1,4 +1,8 @@
 .well
-  %h4= link_to "#{tweet.tag}", tweet.user
-  %p= tweet.body
+  .row
+    .col-xs-2
+      = image_tag(tweet.user.avatar_url, class: "tweet-profile-picture")
+    .col-sx-10
+      %h4= link_to "#{tweet.tag}", tweet.user
+      %p= tweet.body
         
