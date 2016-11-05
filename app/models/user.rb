@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :mentions, class_name: 'Mention', foreign_key: 'mentioned_id'
   has_secure_password validation: false
   validates_presence_of :email, :tag, :password
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates_uniqueness_of :email, :tag
   has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :leaders, through: :following_relationships
