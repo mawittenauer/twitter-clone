@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:index]
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 30)
   end
   
   def show

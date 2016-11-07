@@ -7,3 +7,5 @@
       = link_to user do
         = image_tag(user.avatar_url, class: "index-profile-picture")
         %h4.text-center= user.tag
+
+= will_paginate @users, renderer: BootstrapPagination::Rails
