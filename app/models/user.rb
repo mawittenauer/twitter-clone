@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_validation { downcase_email }
+  before_validation { remove_spaces_from_tag }
   
   has_many :tweets
   has_many :mentions, class_name: 'Mention', foreign_key: 'mentioned_id'
@@ -14,6 +15,10 @@ class User < ActiveRecord::Base
   
   def downcase_email
     self.email.downcase!
+  end
+  
+  def remove_spaces_from_tag
+    self.email.gsub(/\s+/, "")
   end
   
   def can_follow?(user)
