@@ -3,6 +3,7 @@
     %h2= @user.tag
     = image_tag(@user.avatar_url, class: "profile-picture")
     %br
+    %br
     - if current_user.can_follow?(@user)
       = link_to "Follow", user_relationships_path(@user), class: "btn btn-default btn-yellow", method: :post
     - if current_user.can_unfollow?(@user)
