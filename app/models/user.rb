@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
   
   def remove_spaces_from_tag
-    self.email.gsub(/\s+/, "")
+    self.tag.gsub(/\s+/, "")
   end
   
   def can_follow?(user)
