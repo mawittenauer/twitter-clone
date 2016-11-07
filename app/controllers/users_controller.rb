@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      flash[:success] = "You have successfully signed up, now log in to start tweeting!"
       redirect_to sign_in_path
     else
       flash.now[:danger] = "There were the following errors with your submission"
