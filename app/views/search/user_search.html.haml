@@ -1,0 +1,12 @@
+%br
+.row
+  - if @results.empty?
+    %h1.text-center No Results
+  - else
+    - @results.each do |user|
+      .col-xs-3
+        = link_to user do
+          = image_tag(user.avatar_url, class: "index-profile-picture")
+          %h4.text-center= user.tag
+
+= will_paginate @results, renderer: BootstrapPagination::Rails
