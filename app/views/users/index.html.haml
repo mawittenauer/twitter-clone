@@ -1,4 +1,10 @@
-%h1 All Users
+%h1.text-center All Users
+.row
+  = form_tag '/user_search', method: :get do
+    .col-xs-5.col-xs-offset-3
+      =text_field_tag :search_term, "", class: "form-control"
+    .col-xs-1
+      =submit_tag "Search", class: "btn btn-default pull-right"
 %br
 %br
 .row
