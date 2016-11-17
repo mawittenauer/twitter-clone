@@ -15,6 +15,14 @@ class TweetsController < ApplicationController
     end
   end
   
+  def reply
+    @tweets = current_user.user_feed
+    @mentions = current_user.mentions.includes(:tweet).order("created_at DESC")
+    @user = User.find(params[:id])
+    @tweet = Tweet.new(body: "@#{@user.tag}")
+    render 'pages/home'
+  end
+  
   private
   def tweet_params
     params.require(:tweet).permit(:body)
