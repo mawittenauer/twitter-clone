@@ -1,7 +1,7 @@
 .row
   .col-sm-4
     = bootstrap_form_for @tweet do |f|
-      = f.text_area :body, label: "Tweet", rows: 6
+      = f.text_area :body, label: "Tweet", rows: 6, class: "tweet-input"
       = f.submit "Tweet"
       %br
       %br
@@ -18,3 +18,13 @@
       %h3 Mentions:
       - @mentions.each do |mention|
         = render "tweets/tweet", tweet: mention.tweet
+        
+%script
+  var tweetInput = $('.tweet-input');
+
+  // Multiply by 2 to ensure the cursor always ends up at the end;
+  // Opera sometimes sees a carriage return as 2 characters.
+  var strLength = tweetInput.val().length * 2 + 1;
+
+  tweetInput.focus();
+  tweetInput[0].setSelectionRange(strLength, strLength + 1);

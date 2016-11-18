@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create]
     member do
       delete '/relationships', to: 'relationships#destroy'
+      get '/reply', to: 'tweets#reply'
     end
   end
   get '/register', to: 'users#new'
